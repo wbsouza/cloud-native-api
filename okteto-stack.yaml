@@ -1,0 +1,11 @@
+services:
+  cloud-native-api:
+    public: true
+    image: wbsouza/cloud-native-api:latest
+    build: .
+    replicas: 1
+    ports:
+      - 80:8080
+    resources:
+      cpu: 100m
+      memory: 128Mi
