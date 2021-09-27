@@ -12,6 +12,7 @@ __pycache__/
 .vscode/
 build/
 develop-eggs/
+mongo-data/
 dist/
 downloads/
 eggs/

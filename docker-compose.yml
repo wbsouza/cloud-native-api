@@ -1,14 +1,31 @@
 version: "3.8"
 services:
+
+  mongodb:
+    image: mongo:4.4
+    container_name: mongodb
+    restart: unless-stopped
+    command: mongod
+    volumes:
+      - ./mongo-data:/data/db
+    ports:
+      - 27017:27017
+
   cloud-native-api:
     container_name: cloud-native-api
     image: wbsouza/cloud-native-api
-    env_file:
-      - .env
+    restart: unless-stopped
+    volumes:
+      - ./docker.env:/app/.env
     environment:
       - PYTHONPATH=/app
+    depends_on:
+      - mongodb
     build:
       context: ./
       dockerfile: Dockerfile
     ports:
       - 8080:8080
+
+
+
