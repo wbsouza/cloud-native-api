@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  cloud-native-api:
+    container_name: cloud-native-api
+    image: wbsouza/cloud-native-api
+    env_file:
+      - .env
+    environment:
+      - PYTHONPATH=/app
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
